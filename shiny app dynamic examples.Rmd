@@ -1,0 +1,152 @@
+---
+title: "shiny active notes"
+author: "Anna"
+date: "12 August 2015"
+output: html_document
+runtime: shiny
+---
+
+
+
+```{r eval=FALSE}
+# Examples
+runExample("01_hello") # a histogram RELEVANT
+runExample("02_text") # tables and data frames RELEVANT
+runExample("03_reactivity") # a reactive expression
+runExample("04_mpg") # global variables - RELEVANT boxplot as a function of categorical variables
+runExample("05_sliders") # slider bars RELEVANT
+runExample("06_tabsets") # tabbed panels RELEVANT
+runExample("07_widgets") # help text and submit buttons
+runExample("08_html") # Shiny app built from HTML
+runExample("09_upload") # file upload wizard
+runExample("10_download") # file download wizard
+runExample("11_timer") # an automated timer
+```
+
+
+## Embedded Application
+
+It's also possible to embed an entire Shiny application within an R Markdown document using the `shinyAppDir` function. This example embeds a Shiny application located in another directory:
+
+```{r, echo=FALSE}
+shinyAppDir(
+  system.file("examples/01_hello", package="shiny"),
+  options=list(display.mode = "showcase",
+    width="100%", height=550
+  )
+)
+
+
+```
+
+```{r, echo=FALSE}
+shinyAppDir(
+  system.file("examples/02_text", package="shiny"),
+  options=list(
+    width="100%", height=550
+  )
+)
+
+
+```
+
+
+```{r, echo=FALSE}
+shinyAppDir(
+  system.file("examples/03_reactivity", package="shiny"),
+  options=list(
+    width="100%", height=550
+  )
+)
+
+
+```
+
+
+```{r, echo=FALSE}
+shinyAppDir(
+  system.file("examples/04_mpg", package="shiny"),
+  options=list(
+    width="100%", height=550
+  )
+)
+
+
+```
+
+```{r, echo=FALSE}
+shinyAppDir(
+  system.file("examples/05_sliders", package="shiny"),
+  options=list(
+    width="100%", height=550
+  )
+)
+
+
+```
+
+```{r, echo=FALSE}
+shinyAppDir(
+  system.file("examples/06_tabsets", package="shiny"),
+  options=list(
+    width="100%", height=550
+  )
+)
+
+
+```
+
+```{r, echo=FALSE}
+shinyAppDir(
+  system.file("examples/07_widgets", package="shiny"),
+  options=list(
+    width="100%", height=550
+  )
+)
+
+
+```
+
+```{r, echo=FALSE}
+shinyAppDir(
+  system.file("examples/08_html", package="shiny"),
+  options=list(
+    width="100%", height=550
+  )
+)
+
+
+```
+
+```{r, echo=FALSE}
+shinyAppDir(
+  system.file("examples/09_upload", package="shiny"),
+  options=list(
+    width="100%", height=550
+  )
+)
+
+
+```
+
+```{r, echo=FALSE}
+shinyAppDir(
+  system.file("examples/10_download", package="shiny"),
+  options=list(
+    width="100%", height=550
+  )
+)
+
+
+```
+
+```{r, echo=FALSE}
+shinyAppDir(
+  system.file("examples/11_timer", package="shiny"),
+  options=list(
+    width="100%", height=550
+  )
+)
+
+
+```

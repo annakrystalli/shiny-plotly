@@ -1,0 +1,104 @@
+
+# **shiny-plotly**
+Repo for training and experimentation in data interactivity and visualisation
+
+## Notes
+
+* Function in ```ui.R``` tells Shiny where to display objects. 
+* Build the objects in ```server.R```. The code should go in the unnamed function ```function(input, output){}``` inside the ```shinyServer()``` function. 
+
+
+<br>
+
+### Lesson 4 - Reactive outputs
+
+<br>
+
+#### Reactive output as a two step process.
+
+1. Add an **R object** to your user-interface with ```ui.R```.
+2. Tell Shiny how to build the object in ```server.R```. The object will be reactive if the *code that builds it calls a* ***widget value***.
+
+<br>
+
+#### ```ui.R``` functions: turn R objects into output for your user-interface.
+
+| Output function    | creates  |
+|--------------------|----------|
+| ```htmlOutput```         | raw HTML |
+| ```imageOutput```        | image    |
+| ```plotOutput```         | plot     |
+| ```tableOutput```        | table    |
+| ```textOutput```         | text     |
+| ```uiOutput```           | raw HTML |
+| ```verbatimTextOutput``` | text     |
+
+*** Place the output function inside ```sidebarPanel``` or ```mainPanel``` in the ```ui.R``` script. ***
+
+<br>
+
+#### ```server.R``` functions: provide content to the UI
+##### Create reactivity by connecting the ***values*** of ```input``` to the ***objects*** in ```output```. 
+
+* Code should go in the unnamed function ```function(input, output){}``` inside the ```shinyServer()``` function. 
+  + builds a list-like object named ```output``` that contains **all of the code needed to update the R objects in your app**. 
+  + Each R object needs to **have its own entry** in the list.
+    + Create an entry **matching the name of reactive element** created in ```ui.R``` by defining new element for ```output```.
+    + Each entry to ```output``` should contain the output of one of Shiny’s ```render*``` functions, **corrresponding to the type** of reactive object being built.
+  
+  e.g. 
+  
+```{r eval = FALSE}
+  # server.R
+
+shinyServer(function(input, output) {
+
+     output$text1 <- renderText({ 
+          "You have selected this"
+     })
+
+  }
+)
+```
+
+
+| render function | creates                                         |
+|-----------------|-------------------------------------------------|
+| ```renderImage```     | images (saved as a link to a source file)       |
+| ```renderPlot```      | plots                                           |
+| ```renderPrint```     | any printed output                              |
+| ```renderTable```     | data frame, matrix, other table like structures |
+| ```renderText```      | character strings                               |
+| ```renderUI```        | a Shiny tag object or HTML                      |
+
+
+
+Each ```render*``` function takes a single argument: an R expression surrounded by braces, ```{}```
+
+<br>
+
+
+#### Use widget values to build reactive content
+
+* Make objects reactive by using ```input``` argument in ```render.R``` functions to call widget output values from UI.
+      * name of ```render.R``` ```input$``` values must match ```inputId``` argument of desired widget output
+e.g.
+
+  
+```{r eval = FALSE}
+# server.R
+
+shinyServer(
+  function(input, output) {
+  
+    output$text1 <- renderText({ 
+      paste("You have selected", input$var)
+    })
+    
+  }
+)
+```
+  
+  
+
+
